@@ -1,0 +1,34 @@
+type Category {
+  name: String!
+}
+
+enum ModifierType {
+  CHOICE
+  LIST
+}
+
+type Modifier {
+  name: String!
+  type: ModifierType!
+  modifierArgs: [String!]!
+  cost: Float!
+}
+
+enum LineItemType {
+  COST_ITEM
+  GRAND_TOTAL
+  MENU_ITEM
+}
+
+type LineItem {
+  id: ID!
+  category: Category!
+  description: String!
+  price: Float!
+  modifiers: [Modifier]!
+  addedModifiers: [Modifier]!
+}
+
+type Cart {
+  lineItems: [LineItem!]!
+}
